@@ -34,88 +34,13 @@ public class RegisterCompany extends AppCompatActivity implements View.OnClickLi
     String Name,Email, Password, Address, Phone, RegisterConfirmPassword;
     DatabaseReference mdatabase;
     FirebaseAuth mAuth;
-    private Button btnToggleDark;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_company);
-        btnToggleDark
-                = findViewById(R.id.btnToggleDark);
 
-        SharedPreferences sharedPreferences
-                = getSharedPreferences(
-                "sharedPrefs", MODE_PRIVATE);
-        final SharedPreferences.Editor editor
-                = sharedPreferences.edit();
-        final boolean isDarkModeOn
-                = sharedPreferences
-                .getBoolean(
-                        "isDarkModeOn", false);
-        if (isDarkModeOn) {
-            AppCompatDelegate
-                    .setDefaultNightMode(
-                            AppCompatDelegate
-                                    .MODE_NIGHT_YES);
-            btnToggleDark.setText(
-                    "Light Mode");
-        }
-        else {
-            AppCompatDelegate
-                    .setDefaultNightMode(
-                            AppCompatDelegate
-                                    .MODE_NIGHT_NO);
-            btnToggleDark
-                    .setText(
-                            "Dark Mode");
-        }
-        btnToggleDark.setOnClickListener(
-                new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View view)
-                    {
-                        // When user taps the enable/disable
-                        // dark mode button
-                        if (isDarkModeOn) {
-
-                            // if dark mode is on it
-                            // will turn it off
-                            AppCompatDelegate
-                                    .setDefaultNightMode(
-                                            AppCompatDelegate
-                                                    .MODE_NIGHT_NO);
-                            // it will set isDarkModeOn
-                            // boolean to false
-                            editor.putBoolean(
-                                    "isDarkModeOn", false);
-                            editor.apply();
-
-                            // change text of Button
-                            btnToggleDark.setText(
-                                    "Dark Mode");
-                        }
-                        else {
-
-                            // if dark mode is off
-                            // it will turn it on
-                            AppCompatDelegate
-                                    .setDefaultNightMode(
-                                            AppCompatDelegate
-                                                    .MODE_NIGHT_YES);
-
-                            // it will set isDarkModeOn
-                            // boolean to true
-                            editor.putBoolean(
-                                    "isDarkModeOn", true);
-                            editor.apply();
-
-                            // change text of Button
-                            btnToggleDark.setText(
-                                    "Light Mode");
-                        }
-                    }
-                });
 
 
 

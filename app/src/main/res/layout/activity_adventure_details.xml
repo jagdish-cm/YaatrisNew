@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdventureDetails"
+    android:background="@color/backgroundColor">
+
+    <TextView
+        android:id="@+id/AdventureDetails"
+        android:layout_width="350dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="Adventure Details"
+        android:textColor="@color/colorPrimary"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="239dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AdventureDetails"
+        app:srcCompat="@drawable/adventuredetails" />
+
+    <Button
+        android:id="@+id/Bookmyticket"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="270dp"
+        android:layout_marginBottom="36dp"
+        android:text="Book my ticket"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="278dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="41dp"
+        android:fontFamily="sans-serif"
+        android:text="CheckPoints:\n\n\nTiming Details:\n\n\nDescription:\n\n\nRatings and Reviews:
+        \n\n\nNearby Events:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Bookmyticket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

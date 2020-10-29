@@ -39,6 +39,7 @@ public class Account extends Fragment implements View.OnClickListener {
     private EditText Email;
     private EditText Password;
     private Button LogInButton;
+    private Button Settings;
 
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListner;
@@ -75,6 +76,13 @@ public class Account extends Fragment implements View.OnClickListener {
         Email = (EditText) v.findViewById(R.id.loginEmail);
         Password = (EditText) v.findViewById(R.id.loginPassword);
         LogInButton= (Button) v.findViewById(R.id.buttonLogin);
+        Settings = (Button) v.findViewById(R.id.Settings);
+        Settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettings();
+            }
+        });
 
 
 
@@ -156,7 +164,10 @@ public class Account extends Fragment implements View.OnClickListener {
 
     }
 
-
+    public void openSettings(){
+        Intent intent = new Intent(getActivity(), settings.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onClick(View view) {
