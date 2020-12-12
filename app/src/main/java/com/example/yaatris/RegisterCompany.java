@@ -2,19 +2,16 @@ package com.example.yaatris;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,8 +20,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Date;
 
 public class RegisterCompany extends AppCompatActivity implements View.OnClickListener {
 
@@ -51,7 +46,7 @@ public class RegisterCompany extends AppCompatActivity implements View.OnClickLi
         address = (EditText)findViewById(R.id.companyAddress);
         password = (EditText)findViewById(R.id.companyPassword);
         confirmPassword = (EditText) findViewById(R.id.companyPasswordConfirm);
-        register = (Button)findViewById(R.id.buttonRegCompany);
+        register = (Button)findViewById(R.id.btnAddAdventure);
 
         //attaching listener to button
         register.setOnClickListener((View.OnClickListener) this);
@@ -156,10 +151,8 @@ public class RegisterCompany extends AppCompatActivity implements View.OnClickLi
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if (task.isSuccessful()) {
-                            Company company = new Company(Name, Phone, Email, Address);
-
+                            final Company company = new Company(Name, Phone, Email, Address);
                             FirebaseDatabase.getInstance().getReference("Companies")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(company).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -168,12 +161,18 @@ public class RegisterCompany extends AppCompatActivity implements View.OnClickLi
                                     progressDialog.dismiss();
                                     if (task.isSuccessful()) {
                                         Toast.makeText(RegisterCompany.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(getBaseContext(), AddAdventure.class);
+                                        i.putExtra( "companyEmail", mAuth.getCurrentUser().getEmail());
+                                        startActivity(i);
                                     } else {
                                         //display a failure message
                                         Toast.makeText(RegisterCompany.this, "Check the credentials again", Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
+                        }
+                        else {
+                            Toast.makeText(RegisterCompany.this, "Something went wrong...", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

@@ -37,14 +37,14 @@ public class Volunteers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_adventures, container, false);
-        card = (CardView) v.findViewById(R.id.card_view);
-        card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Calling EditText is empty or no method.
-                openAdventure();
-            }
-        });
+//        card = (CardView) v.findViewById(R.id.card_view);
+//        card.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Calling EditText is empty or no method.
+//                openAdventure();
+//            }
+//        });
         return v;
     }
 
